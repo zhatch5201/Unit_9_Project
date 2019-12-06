@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <!--
       New Perspectives on HTML5 and CSS3, 7th Edition
@@ -13,12 +14,15 @@
       Filename:   cg_register.html
 
    -->
-   
+
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1" />
    <title>CGIP Registration Form</title>
    <link href="cg_base.css" rel="stylesheet" />
    <link href="cg_styles.css" rel="stylesheet" />
+   <link rel="stylesheet" href="cg_forms.css">
+   <link rel="stylesheet" href="cg_validate.css" />
+   <script src="cg_script.js"></script>
 </head>
 
 <body>
@@ -33,10 +37,10 @@
          <li class="newgroup"><a href="#">general session</a></li>
          <li><a href="#">abstracts</a></li>
          <li><a href="#">programs</a></li>
-         <li><a href="#">workshops</a></li> 
+         <li><a href="#">workshops</a></li>
          <li class="newgroup"><a href="#">committees</a></li>
          <li><a href="#">executive session</a></li>
-         <li><a href="#">advisory council</a></li> 
+         <li><a href="#">advisory council</a></li>
          <li class="newgroup"><a href="#">travel info</a></li>
          <li><a href="#">accommodations</a></li>
          <li><a href="#">banquet</a></li>
@@ -44,15 +48,54 @@
          <li class="newgroup"><a href="#">registration</a></li>
          <li class="newgroup"><a href="#">ACGIP home page</a></li>
          <li><a href="#">tour Sante Fe</a></li>
-         <li><a href="#">links</a></li>                                                      
-      </ul>         
+         <li><a href="#">links</a></li>
+      </ul>
    </nav>
    <section>
       <h1>Conference Registration Form</h1>
       <p>Required Item (*)</p>
-      
+
+      <form action="http://www.example.com/cg/register" method="POST">
+         <label for="titleBox">Title</label>
+         <input list="titleBox" type="text">
+         <datalist id="titleBox">
+            <option value="Mr.">Mr.</option>
+            <option value="Mrs.">Mrs.</option>
+            <option value="Ms.">Ms.</option>
+            <option value="Prof.">Prof.</option>
+            <option value="Dr.">Dr.</option>
+            <option value="Assist Prof.">Assist Prof.</option>
+            <option value="Assoc. Prof.">Assoc. Prof.</option>
+         </datalist>
+         <label for="fnBox">First Name*</label>
+         <input type="text" required>
+         <label for="lnBox">Last Name*</label>
+         <input type="text" required>
+         <label for="addBox">Address*</label>
+         <input type="text" required>
+         <label for="groupBox">Company or University</label>
+         <input type="text">
+         <label for="mailBox">E-mail*</label>
+         <input type="email" required>
+         <label for="phoneBox" pattern="^\d{10}$|^(\(\d{3}\)\s*)?\d{3}[\s-]?\d{4}$">Phone Number*</label>
+         <input type="tel" required>
+         <label for="idBox">ACGIP Membership Number</label>
+         <input type="text">
+
+         <label for="regList">
+            <select name="regList" id="regList">
+               <option value="member">ACGIP Member ($695)</option>
+               <option value="nonmember">Non-member ($795)</option>
+               <option value="student">Student ($310)</option>
+               <option value="poster">Poster (95$)</option>
+               <option value="guest">Guest ($35)</option>
+            </select>
+
+            <button type="submit">Continue</button>
+         </label>
+      </form>
    </section>
-   
+
    <aside>
       <dl>
          <dt>ACGIP Member ($695)</dt>
@@ -61,7 +104,7 @@
          <dd>Eligible to attend all sessions and banquet</dd>
          <dt>Student ($310)</dt>
          <dd>Eligible to attend all sessions. <a href="#">Proof</a> of
-             student status required</dd>
+            student status required</dd>
          <dt>Poster ($95)</dt>
          <dd>Eligible to attend display hall and vendor stations</dd>
          <dt>Guest ($35)</dt>
@@ -73,4 +116,5 @@
       Association of Computer Graphics and Image Processing
    </footer>
 </body>
+
 </html>
